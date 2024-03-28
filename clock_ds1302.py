@@ -211,13 +211,13 @@ class DS1302:
         self._write_byte(RTC_CLOCK_BURST_MODE)
 
     def getDate(self):
-        day = ds.readDayOfTheMonth()
-        month = ds.readMonth()
-        year = ds.readYear()
-        hour = ds.readHours()
-        min = ds.readMinutes()
-        sec = ds.readSeconds()
-        dayOfTheWeek = ds.readDayOfTheWeek()
+        day = self.readDayOfTheMonth()
+        month = self.readMonth()
+        year = self.readYear()
+        hour = self.readHours()
+        min = self.readMinutes()
+        sec = self.readSeconds()
+        dayOfTheWeek = self.readDayOfTheWeek()
         return "Date: " + day +"." + month + "." + year + ", " + hour + ":" + min + ":" + sec + ", Day: " + dayOfTheWeek
 
     def setDate(self, dayOfTheMonth, month, year, hour, minute, second, dayOfWeek):
@@ -238,7 +238,7 @@ class DS1302:
 
 
 """Example of use: """
-# ds = DS1302(CLK_PIN,DAT_PIN,CS_RST_PIN)
+ds = DS1302(CLK_PIN,DAT_PIN,CS_RST_PIN)
 
 # ds.writeDayOfTheMonth(3)
 # ds.writeMonth(2)
@@ -250,6 +250,6 @@ class DS1302:
 """OR"""
 # ds.setDate(dayOfTheMonth=3, month=2, year=2024, hour=15, minute=47, second=30, dayOfWeek=6)
 """READ DATE"""
-# while 1:
-#     print(ds.getDate())
-#     time.sleep(1)
+while 1:
+    print(ds.getDate())
+    time.sleep(1)
